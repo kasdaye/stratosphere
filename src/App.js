@@ -56,20 +56,31 @@ function App() {
     setPhaseFilter(["Shooting", "Fight"]);
   }, [])
 
-  let allUnitTags = Array.from(new Set(units.flatMap(unit => unit.tags)));
+  const [selectedPhaseButton, setSelectedPhaseButton] = useState(1);
+  useEffect(() => {
+    setSelectedPhaseButton(1);
+  }, [])
 
+  let allUnitTags = Array.from(new Set(units.flatMap(unit => unit.tags)));
   const [unitTagsFilter, setUnitTagsFilter] = useState([]);
   useEffect(() => {
     setUnitTagsFilter(allUnitTags);
   }, [])
 
-  function handlePhase(selectedPhase) {
+  const [selectedUnitButton, setSelectedUnitButton] = useState(1);
+  useEffect(() => {
+    setSelectedUnitButton(1);
+  }, [])
+
+  function handlePhase(selectedPhase, selectedPhaseKey) {
     setPhaseFilter(selectedPhase);
+    setSelectedPhaseButton(selectedPhaseKey);
     setFilteredStratagems(filterStratagems(selectedPhase, unitTagsFilter))
   }
 
-  function handleUnit(selectedUnitTags) {
+  function handleUnit(selectedUnitTags, selectedUnitKey) {
     setUnitTagsFilter(selectedUnitTags);
+    setSelectedUnitButton(selectedUnitKey);
     setFilteredStratagems(filterStratagems(phaseFilter, selectedUnitTags));
   }
 
@@ -82,13 +93,13 @@ function App() {
           alignItems="center"
           spacing={1}
         >
-          <Button variant="outlined" onClick={() => handleUnit(allUnitTags)}>
+          <Button variant={1 == selectedUnitButton ? "contained" : "outlined"} onClick={() => handleUnit(allUnitTags, 1)}>
             ALL<br />
             NO UNIT SELECTION
           </Button>
           {units &&
             units.map((unit) => (
-              <Button variant="outlined" onClick={() => handleUnit(unit.tags)}>
+              <Button variant={unit.key == selectedUnitButton ? "contained" : "outlined"} onClick={() => handleUnit(unit.tags, unit.key)}>
                 {unit.customName}<br />
                 {unit.name}
               </Button>
@@ -104,7 +115,7 @@ function App() {
         >
           {buttons &&
             buttons.map((type) => (
-              <Button variant="outlined" onClick={() => handlePhase(type.value)}>
+              <Button variant={type.key == selectedPhaseButton ? "contained" : "outlined"} onClick={() => handlePhase(type.value, type.key)}>
                 {type.name}
               </Button>
             ))}
