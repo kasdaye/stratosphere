@@ -57,7 +57,7 @@ function App() {
   }, [])
 
   let allUnitTags = Array.from(new Set(units.flatMap(unit => unit.tags)));
-  
+
   const [unitTagsFilter, setUnitTagsFilter] = useState([]);
   useEffect(() => {
     setUnitTagsFilter(allUnitTags);
@@ -82,6 +82,10 @@ function App() {
           alignItems="center"
           spacing={1}
         >
+          <Button variant="outlined" onClick={() => handleUnit(allUnitTags)}>
+            ALL<br />
+            NO UNIT SELECTION
+          </Button>
           {units &&
             units.map((unit) => (
               <Button variant="outlined" onClick={() => handleUnit(unit.tags)}>
