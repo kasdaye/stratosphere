@@ -1,14 +1,14 @@
 export const buttons = [
     {
         name: "All",
-        value: "All"
+        value: ["Shooting", "Fight"]
     },
     {
         name: "Shooting",
-        value: "Shooting"
+        value: ["Shooting"]
     },
     {
         name: "Fight",
-        value: "Fight"
+        value: ["Fight"]
     }
 ];

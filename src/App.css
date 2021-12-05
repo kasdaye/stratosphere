@@ -32,7 +32,30 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.app-ui {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  grid-template-areas:
+  "sidebar phases"
+  "sidebar stratagems"
+}
+
+.units {
+  grid-area: sidebar;
+}
+
+.phases {
+  grid-area: phases;
+}
+
+.stratagems {
+  grid-area: stratagems;
 }

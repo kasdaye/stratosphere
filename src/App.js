@@ -5,9 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import stratagems from './stratagems/deathGuard.json';
+import units from './armyList/theBlessedHost.json';
 import { buttons } from "./buttons.js";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import './App.css';
 
 function MakeCardGrid(stratagems) {
   return (
@@ -33,8 +35,13 @@ function MakeCardGrid(stratagems) {
   )
 }
 
-function filterStratagems(stratagemType) {
-  let filteredStratagems = stratagems.filter(stratagem => stratagem.phases.includes(stratagemType));
+function filterStratagems(selectedPhases, unitTagsFilter) {
+  const areInSelectedPhases = (stratagemPhase) => selectedPhases.includes(stratagemPhase);
+  const tagPresentInUnitFilter = (stratagemTag) => unitTagsFilter.includes(stratagemTag);
+
+  let filteredStratagems = stratagems
+    .filter(stratagem => stratagem.phases.some(areInSelectedPhases))
+    .filter(stratagem => stratagem.tags.every(tagPresentInUnitFilter));
   return filteredStratagems;
 }
 
@@ -44,30 +51,65 @@ function App() {
     setFilteredStratagems(stratagems);
   }, []);
 
-  function handleStratagems(e) {
-    let stratagemType = e;
-    stratagemType !== "All"
-      ? setFilteredStratagems(filterStratagems(stratagemType))
-      : setFilteredStratagems(stratagems);
+  const [phaseFilter, setPhaseFilter] = useState([]);
+  useEffect(() => {
+    setPhaseFilter(["Shooting", "Fight"]);
+  }, [])
+
+  let allUnitTags = Array.from(new Set(units.flatMap(unit => unit.tags)));
+  
+  const [unitTagsFilter, setUnitTagsFilter] = useState([]);
+  useEffect(() => {
+    setUnitTagsFilter(allUnitTags);
+  }, [])
+
+  function handlePhase(selectedPhase) {
+    setPhaseFilter(selectedPhase);
+    setFilteredStratagems(filterStratagems(selectedPhase, unitTagsFilter))
+  }
+
+  function handleUnit(selectedUnitTags) {
+    setUnitTagsFilter(selectedUnitTags);
+    setFilteredStratagems(filterStratagems(phaseFilter, selectedUnitTags));
   }
 
   return (
-    <>
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-      >
-        {buttons &&
-          buttons.map((type) => (
-            <Button variant="outlined" onClick={() => handleStratagems(type.value)}>
-              {type.name}
-            </Button>
-          ))}
-      </Stack>
-      {MakeCardGrid(Object.values(filteredStratagems))}
-    </>
+    <div className="app-ui">
+      <div className="units">
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+        >
+          {units &&
+            units.map((unit) => (
+              <Button variant="outlined" onClick={() => handleUnit(unit.tags)}>
+                {unit.customName}<br />
+                {unit.name}
+              </Button>
+            ))}
+        </Stack>
+      </div>
+      <div className="phases">
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          {buttons &&
+            buttons.map((type) => (
+              <Button variant="outlined" onClick={() => handlePhase(type.value)}>
+                {type.name}
+              </Button>
+            ))}
+        </Stack>
+      </div>
+      <div className="stratagems">
+        {MakeCardGrid(Object.values(filteredStratagems))}
+      </div>
+    </div>
   )
 }
 
