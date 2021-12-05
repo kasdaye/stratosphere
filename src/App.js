@@ -15,7 +15,7 @@ function MakeCardGrid(stratagems) {
   return (
     <Grid container spacing={4}>
       {stratagems.map(stratagem => (
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <Typography variant="h5" component="div">
@@ -53,7 +53,7 @@ function App() {
 
   const [phaseFilter, setPhaseFilter] = useState([]);
   useEffect(() => {
-    setPhaseFilter(["Shooting", "Fight"]);
+    setPhaseFilter(["Command", "Shooting", "Fight", "Opponent's Shooting"]);
   }, [])
 
   const [selectedPhaseButton, setSelectedPhaseButton] = useState(1);

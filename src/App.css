@@ -40,12 +40,12 @@
 
 .app-ui {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto;
   grid-gap: 20px;
   grid-template-areas:
-  "sidebar phases"
-  "sidebar stratagems"
+    "sidebar phases"
+    "sidebar stratagems"
 }
 
 .units {
