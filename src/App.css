@@ -44,7 +44,7 @@
   grid-template-rows: auto;
   grid-gap: 20px;
   grid-template-areas:
-    "sidebar phases"
+    "upload phases"
     "sidebar stratagems"
 }
 
@@ -58,4 +58,8 @@
 
 .stratagems {
   grid-area: stratagems;
+}
+
+.upload {
+  grid-area: upload;
 }

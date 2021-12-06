@@ -8,7 +8,7 @@ export const buttons = [
         key: 2,
         name: "Command",
         value: ["Command"]
-    },,
+    },
     {
         key: 3,
         name: "Psychic",
