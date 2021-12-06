@@ -4,7 +4,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-// import units from './armyList/theBlessedHost.json';
 import { buttons } from "./buttons.js";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
