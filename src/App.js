@@ -27,7 +27,7 @@ function MakeCardGrid(stratagems) {
                 {stratagem.cost}
               </Typography>
               <Typography variant="body2">
-                {stratagem.description}
+                <div dangerouslySetInnerHTML={{ __html: stratagem.description }} />
               </Typography>
             </CardContent>
           </Card>
