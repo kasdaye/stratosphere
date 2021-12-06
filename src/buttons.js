@@ -1,5 +1,10 @@
 export const buttons = [
     {
+        key: 0,
+        name: "Before Battle",
+        value: ["Before Battle"]
+    },
+    {
         key: 1,
         name: "All",
         value: ["Command", "Psychic", "Shooting", "Charge", "Fight", "Opponent's Shooting", "Opponent's Charge"]
