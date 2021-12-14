@@ -1,4 +1,78 @@
-# Getting Started with Create React App
+# For Users
+
+## Running Stratosphere
+Download the latest build, unzip, and run index.html in your favourite browser.
+
+## Creating a Stratagem JSON file
+```
+[
+    {
+        "name": "Stratagem A",
+        "cost": "1",
+        "description": "Description A",
+        "phases": [
+            "Shooting",
+            "Fight"
+        ],
+        "tags": [
+            "Evil Marines"
+        ]
+    },
+    {
+        "name": "Stratagem B",
+        "cost": "2",
+        "description": "Description B",
+        "phases": [
+            "Fight"
+        ],
+        "tags": [
+            "Even More Evil Faction",
+            "Even More Evil Marines"
+        ]
+    }
+]
+```
+
+Valid values for the "phases" array are:
+* "Before Battle"
+* "Command"
+* "Movement"
+* "Psychic"
+* "Shooting"
+* "Charge"
+* "Fight"
+* "Morale"
+* "Opponent's Movement"
+* "Opponent's Psychic"
+* "Opponent's Shooting"
+* "Opponent's Charge"
+
+## Creating a Army List JSON file
+```
+[
+    {
+        "key": 2,
+        "customName": "Roberta Robertsdottir",
+        "name": "Evil Marine Leader",
+        "tags": [
+            "Evil Marines"
+        ]
+    },
+    {
+        "key": 3,
+        "customName": "Bob Bobson",
+        "name": "Even More Evil Gruntc",
+        "tags": [
+            "Even More Evil Faction",
+            "Even More Evil Marines"
+        ]
+    }
+]
+```
+* "key" must start at 2 and be incremented.
+* The "tags" entered here should be consistent with the "tags" in the Stratagems JSON file.
+
+# For Developers
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -28,43 +102,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
