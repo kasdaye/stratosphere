@@ -58,7 +58,7 @@ function App() {
 
   const [phaseFilter, setPhaseFilter] = useState([]);
   useEffect(() => {
-    setPhaseFilter(["Command", "Psychic", "Shooting", "Charge", "Fight", "Opponent's Shooting", "Opponent's Charge"]);
+    setPhaseFilter(["Command", "Movement", "Psychic", "Shooting", "Charge", "Fight", "Morale", "Opponent's Movement", "Opponent's Psychic", "Opponent's Shooting", "Opponent's Charge"]);
   }, [])
 
   const [selectedPhaseButton, setSelectedPhaseButton] = useState(1);
